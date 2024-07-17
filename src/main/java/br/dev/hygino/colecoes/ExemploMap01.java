@@ -21,13 +21,7 @@ public class ExemploMap01 {
 
         @Override
         public int compareTo(ResultadoVotacao outro) {
-            if (this.votos < outro.votos) {
-                return 1;
-            } else if (this.votos > outro.votos) {
-                return -1;
-            } else {
-                return 0;
-            }
+            return -this.votos.compareTo(outro.votos);
         }
     }
 
@@ -59,7 +53,7 @@ public class ExemploMap01 {
 
         System.out.println("Resultado final");
         classificacao.stream().sorted().forEach(System.out::println);
-        
+
         System.out.println("Imprime a lista de cadidatos");
         for (var chave : resultado.keySet()) {
             System.out.println(chave);
