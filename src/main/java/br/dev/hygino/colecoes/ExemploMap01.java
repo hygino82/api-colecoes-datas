@@ -46,14 +46,14 @@ public class ExemploMap01 {
             resultado.put(voto, contagem);
         });
 
-        Set<ResultadoVotacao> classificacao = new HashSet<>();
+        SortedSet<ResultadoVotacao> classificacao = new TreeSet<>() ;
         resultado.forEach((nome, voto) -> {
             classificacao.add(new ResultadoVotacao(nome, voto));
         });
 
         System.out.println("Resultado final");
-        classificacao.stream().sorted().forEach(System.out::println);
-
+        classificacao.stream().forEach(System.out::println);
+       // classificacao.stream().sorted().forEach(System.out::println);
         System.out.println("Imprime a lista de cadidatos");
         for (var chave : resultado.keySet()) {
             System.out.println(chave);
