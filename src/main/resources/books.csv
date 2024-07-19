@@ -1,12 +1,31 @@
-titulo;autor;editora;pagina;ano de publicacao
-O Guarani;José de Alencar;Martins Fontes;608;1857
-Dom Casmurro;Machado de Assis;Penguin Companhia;256;1899
-Grande Sertão: Veredas;João Guimarães Rosa;Nova Fronteira;624;1956
-O Cortiço;Aluísio Azevedo;Ateliê Editorial;320;1890
-Capitães da Areia;Jorge Amado;Companhia das Letras;280;1937
-A Hora da Estrela;Clarice Lispector;Rocco;88;1977
-Vidas Secas;Graciliano Ramos;Record;176;1938
-Iracema;José de Alencar;Ática;168;1865
-Memórias Póstumas de Brás Cubas;Machado de Assis;Penguin Companhia;208;1881
-Macunaíma;Mário de Andrade;Agir;208;1928
-O Alquimista;Paulo Coelho;HarperOne;208;1988
+O Guarani;José de Alencar;Martins Fontes;608;1857;Brasil
+Dom Casmurro;Machado de Assis;Penguin Companhia;256;1899;Brasil
+Grande Sertão: Veredas;João Guimarães Rosa;Nova Fronteira;624;1956;Brasil
+O Cortiço;Aluísio Azevedo;Ateliê Editorial;320;1890;Brasil
+Capitães da Areia;Jorge Amado;Companhia das Letras;280;1937;Brasil
+A Hora da Estrela;Clarice Lispector;Rocco;88;1977;Brasil
+Vidas Secas;Graciliano Ramos;Record;176;1938;Brasil
+Iracema;José de Alencar;Ática;168;1865;Brasil
+Memórias Póstumas de Brás Cubas;Machado de Assis;Penguin Companhia;208;1881;Brasil
+Macunaíma;Mário de Andrade;Agir;208;1928;Brasil
+O Alquimista;Paulo Coelho;HarperOne;208;1988;Brasil
+Orgulho e Preconceito;Jane Austen;Martin Claret;424;1813;Reino Unido
+Cem Anos de Solidão;Gabriel García Márquez;Record;448;1967;Colômbia
+Guerra e Paz;Leon Tolstói;Companhia das Letras;2160;1869;Rússia
+O Grande Gatsby;F. Scott Fitzgerald;Companhia das Letras;240;1925;EUA
+Crime e Castigo;Fiódor Dostoiévski;Editora 34;576;1866;Rússia
+O Apanhador no Campo de Centeio;J.D. Salinger;Editora do Autor;224;1951;EUA
+Dom Quixote;Miguel de Cervantes;Companhia das Letras;1232;1605;Espanha
+Os Irmãos Karamazov;Fiódor Dostoiévski;Editora 34;1056;1880;Rússia
+Madame Bovary;Gustave Flaubert;Martin Claret;368;1857;França
+Moby Dick;Herman Melville;Principis;632;1851;EUA
+A Divina Comédia;Dante Alighieri;Nova Fronteira;408;1320;Itália
+Anna Kariênina;Lev Tolstói;Editora 34;864;1877;Rússia
+Os Miseráveis;Victor Hugo;Martin Claret;1504;1862;França
+Ulisses;James Joyce;Companhia das Letras;1280;1922;Irlanda
+A Odisseia;Homero;Companhia das Letras;496;800 a.C.;Grécia
+O Sol é Para Todos;Harper Lee;José Olympio;364;1960;EUA
+O Hobbit;J.R.R. Tolkien;Martins Fontes;336;1937;Reino Unido
+O Retrato de Dorian Gray;Oscar Wilde;Penguin Companhia;320;1890;Irlanda
+Em Busca do Tempo Perdido;Marcel Proust;Globo Livros;4200;1913;França
+O Estrangeiro;Albert Camus;Record;176;1942;França
