@@ -17,10 +17,9 @@ public class Main {
 
             String linha;
             while ((linha = reader.readLine()) != null) {
-                // Processar cada linha do arquivo aqui
                 try {
 
-                    final String[] campos = linha.split(",");
+                    final String[] campos = linha.split(";");
                     final var title = campos[0];
                     final var author = campos[1];
                     final var publisher = campos[2];
