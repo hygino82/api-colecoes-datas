@@ -4,6 +4,7 @@ import br.dev.hygino.model.enums.ConsoleType;
 import br.dev.hygino.model.enums.MediaType;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Game {
@@ -69,11 +70,12 @@ public class Game {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return "Game{" +
                 "gameTitle='" + gameTitle + '\'' +
                 ", consoleType=" + consoleType +
                 ", mediaType=" + mediaType +
-                ", releaseDate=" + releaseDate +
+                ", releaseDate=" + formatter.format(releaseDate) +
                 '}';
     }
 }

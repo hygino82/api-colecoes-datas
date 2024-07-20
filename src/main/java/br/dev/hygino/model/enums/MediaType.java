@@ -4,6 +4,6 @@ public enum MediaType {
     CARTRIDGE,
     CD,
     DVD,
-    BLU_DAY,
+    BLU_RAY,
     DOWNLOAD
 }
