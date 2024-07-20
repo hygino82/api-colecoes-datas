@@ -13,9 +13,9 @@ import java.util.stream.Collectors;
 
 import br.dev.hygino.model.Book;
 
-public class Main {
+public class MainLivros {
     public static void main(String[] args) {
-        String arquivo = "src/main/resources/books.csv";
+        final String arquivo = "src/main/resources/books.csv";
         final List<Book> bookList = new ArrayList<>();
 
         try (FileReader fr = new FileReader(arquivo);
@@ -45,18 +45,16 @@ public class Main {
         System.out.println("Leitura concluida com sucesso!");
 
         final String nomeAutor = "Machado de Assis";
-        final Predicate<Book> condicao = (a) -> a.author().equals(nomeAutor);
 
         final var quantidadeLivros = totalDelivrosPorAutor(nomeAutor, bookList);
 
-        System.out.printf("\n\nO Autor %s tem %d livros cadastrados\n", nomeAutor, quantidadeLivros);
-        
-        final var totalPaginas = bookList.stream().filter(condicao).mapToInt(Book::totalPages).sum();
-        System.out.printf("Os livros de %s somam %d páginas\n", nomeAutor, totalPaginas);
+        System.out.printf("O Autor %s tem %d livros cadastrados.\n", nomeAutor, quantidadeLivros);
 
-        final var booksByCountry = bookList.stream()
-                .collect(Collectors.groupingBy(Book::country, Collectors.counting()));
-        System.out.println("\n\nLivros publicados por país");
+        final var totalPaginas = totalDePaginasPorAutor(nomeAutor, bookList);
+        System.out.printf("Os livros cadastrados de %s somam %d páginas.\n", nomeAutor, totalPaginas);
+
+        final var booksByCountry = listarQuantidadeDeLivrosPorPais(bookList);
+        System.out.println("\nLivros publicados por país");
         booksByCountry.forEach((pais, quant) -> System.out.printf("%s: %d livros\n", pais, quant));
 
         final var autores = listarAutoresCadastrados(bookList);
@@ -88,20 +86,41 @@ public class Main {
             escritores.forEach(nome -> System.out.println("  Escritor: " + nome));
             System.out.printf("     Total: %d\n\n", escritores.size());
         });
+
+        final String pais = "Brasil";
+        final var totalLivrosPais = bookList.stream()
+                .filter(livro -> livro.country().equalsIgnoreCase(pais))
+                .count();
+
+        System.out.printf("Total de livros cadastrados do %s %d livros.\n", pais, totalLivrosPais);
     }
 
-    static long totalDelivrosPorAutor(String nomeAutor, List<Book> bookList) {
+    public static long totalDelivrosPorAutor(String nomeAutor, List<Book> bookList) {
         final Predicate<Book> condicao = (a) -> a.author().equals(nomeAutor);
 
         if (!bookList.stream().anyMatch(condicao)) {
             return 0;
         }
-
         final var quantidadeLivros = bookList.stream().filter(condicao).count();
         return quantidadeLivros;
     }
 
-    static List<String> listarAutoresCadastrados(List<Book> bookList) {
+    public static int totalDePaginasPorAutor(String nomeAutor, List<Book> bookList) {
+        final Predicate<Book> condicao = livro -> livro.author().equals(nomeAutor);
+        if (!bookList.stream().anyMatch(condicao)) {
+            return 0;
+        }
+        final var totalPaginas = bookList.stream().filter(condicao).mapToInt(Book::totalPages).sum();
+
+        return totalPaginas;
+    }
+
+    public static Map<String, Long> listarQuantidadeDeLivrosPorPais(List<Book> bookList) {
+        return bookList.stream()
+                .collect(Collectors.groupingBy(Book::country, Collectors.counting()));
+    }
+
+    public static List<String> listarAutoresCadastrados(List<Book> bookList) {
         final var autores = bookList.stream()
                 .map(Book::author)
                 .distinct()
@@ -110,7 +129,7 @@ public class Main {
         return autores;
     }
 
-    static Map<String, Set<String>> listaLivrosPorAutor(List<Book> bookList) {
+    public static Map<String, Set<String>> listaLivrosPorAutor(List<Book> bookList) {
         final var livrosPorAutor = bookList.stream()
                 .collect(Collectors.groupingBy(
                         Book::author,
@@ -118,7 +137,7 @@ public class Main {
         return livrosPorAutor;
     }
 
-    static Map<String, List<String>> listaLivrosPorPais(List<Book> bookList) {
+    public static Map<String, List<String>> listaLivrosPorPais(List<Book> bookList) {
         final var livrosPorPais = bookList.stream()
                 .collect(Collectors.groupingBy(
                         Book::country,
@@ -126,12 +145,22 @@ public class Main {
         return livrosPorPais;
     }
 
-    static Map<String, Set<String>> listaEscritoresPorPais(List<Book> bookList) {
+    public static Map<String, Set<String>> listaEscritoresPorPais(List<Book> bookList) {
         final var escritoresPais = bookList.stream()
                 .collect(Collectors.groupingBy(
                         Book::country,
                         Collectors.mapping(Book::author, Collectors.toSet())));// toSet() para não repetir nome de
                                                                                // autores
         return escritoresPais;
+    }
+
+    public static long totalLivrosCadastradosPorPais(String nomePais, List<Book> bookList) {
+        final Predicate<Book> condicao = livro -> livro.country().equalsIgnoreCase(nomePais);
+        if (!bookList.stream().anyMatch(condicao)) {
+            return 0;
+        }
+        return bookList.stream()
+                .filter(condicao)
+                .count();
     }
 }
